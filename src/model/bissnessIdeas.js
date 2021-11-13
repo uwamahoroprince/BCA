@@ -7,15 +7,15 @@ const BisinessIdea = new mongoose.Schema({
     trim: true,
   },
   owner: {
-    type: mongoose.Schema.ObjectId,
-    ref: "user",
+    type: String,
     required: true,
+    trim: true,
   },
   bisinessDefinition: {
     type: mongoose.Schema.ObjectId,
     ref: "bisinessDefinition",
-    required: true,
   },
+  conditions: [{}],
   description: {
     type: String,
     required: true,
@@ -36,4 +36,4 @@ const BisinessIdea = new mongoose.Schema({
     default: Date.now(),
   },
 });
-module.exports = mongoose.model("bisinessDefinition", BisinessDefinition);
+module.exports = mongoose.model("bisinessIdea", BisinessIdea);

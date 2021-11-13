@@ -1,15 +1,18 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const dbConnect = require("./src/config/db");
-// const gg = require("./src/config/config.env");
+
+const bisinessDefinition = require("./src/router/bisinessDefinition");
+const bisinessIdea = require("./src/router/businessIdea");
 
 const app = express();
-const PORT = 3000;
-app.get("/", (req, res, next) => {
-  res.status(200).json({
-    message: "express is up and running",
-  });
-});
+const PORT = process.env.PORT;
+//loading middlewares
+app.use(express.json());
+
+//excuting routes
+app.use("/BCA/bisinessDefinition", bisinessDefinition);
+app.use("/BCA/bisinessIdea", bisinessIdea);
 //LOADING DOTENV FILE
 dotenv.config({ path: "./src/config/config.env" });
 dbConnect();
