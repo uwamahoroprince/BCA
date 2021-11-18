@@ -19,12 +19,13 @@ exports.createBisinessIdea = asyncHandler(async (req, res, next) => {
   console.log(conditions);
   const bisinessDefinition = conditions._id;
   const userBisinessCriterion = req.body.conditions;
+  console.log(userBisinessCriterion);
   let failedCriteria = 0;
   const totalCriteria = conditions.length;
   let status = "pending";
   for (const key in conditions) {
-    let criterion = userBisinessCriterion[key];
-    let preDefinedCondition = conditions[key];
+    let criterion = userBisinessCriterion[key].criterion;
+    let preDefinedCondition = conditions[key].criterion;
 
     if (JSON.stringify(criterion) != JSON.stringify(preDefinedCondition)) {
       failedCriteria = failedCriteria + 1;

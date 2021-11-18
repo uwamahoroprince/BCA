@@ -19,6 +19,7 @@ exports.fetchBisinessDefinition = asyncHandler(async (req, res, next) => {
   if (!bisinessDefinition) {
     return next(new ErrorResponse("could not find bisness definition", 500));
   }
+  console.log(bisinessDefinition);
   res.status(200).json({
     message: "bisness definitions successfuly found",
     count: bisinessDefinition.length,
